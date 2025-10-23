@@ -30,25 +30,23 @@ scale=1.0">
             <div class="product-card">
               <?php if ($row['foto']): ?>
                 <img src="uploads/<?php echo
-                                  $row['foto']; ?>"
-                  alt="<?php echo $row['nama']; ?>">
+                  $row['foto']; ?>" alt="<?php echo $row['nama']; ?>">
               <?php else: ?>
                 <div class="no-image">Tidak ada
                   gambar</div>
               <?php endif; ?>
               <div class="product-info">
                 <h3><?php echo
-                    htmlspecialchars($row['nama']); ?></h3>
+                  htmlspecialchars($row['nama']); ?></h3>
                 <p class="description">
                   <?php echo
-                  htmlspecialchars(substr($row['deskripsi'], 0, 100)); ?>...
+                    htmlspecialchars(substr($row['deskripsi'], 0, 100)); ?>...
                 </p>
                 <p class="price">Rp <?php echo
-                                    number_format($row['harga'], 0, ',', '.'); ?></p>
+                  number_format($row['harga'], 0, ',', '.'); ?></p>
                 <div class="actions">
                   <a href="detail.php?id=<?php echo
-                                          $row['id']; ?>"
-                    class="btn btn-info">Detail</a>
+                    $row['id']; ?>" class="btn btn-info">Detail</a>
                 </div>
               </div>
             </div>

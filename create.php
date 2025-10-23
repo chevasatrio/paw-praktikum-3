@@ -53,26 +53,22 @@ scale=1.0">
     <?php if ($error): ?>
       <div class="alert alert-error"><?php echo $error; ?>></div>
     <?php endif; ?>
-    <form method="POST" enctype="multipart/form-data"
-      class="form">
+    <form method="POST" enctype="multipart/form-data" class="form">
       <div class="form-group">
         <label for="nama">Nama Produk:</label>
         <input type="text" id="nama" name="nama" required>
       </div>
       <div class="form-group">
         <label for="deskripsi">Deskripsi:</label>
-        <textarea id="deskripsi" name="deskripsi"
-          rows="5"></textarea>
+        <textarea id="deskripsi" name="deskripsi" rows="5"></textarea>
       </div>
       <div class="form-group">
         <label for="harga">Harga (Rp):</label>
-        <input type="number" id="harga" name="harga"
-          step="0.01" required>
+        <input type="number" id="harga" name="harga" step="0.01" required>
       </div>
       <div class="form-group">
         <label for="foto">Foto Produk:</label>
-        <input type="file" id="foto" name="foto"
-          accept="image/*">
+        <input type="file" id="foto" name="foto" accept="image/*">
         <small>Format: JPG, PNG, GIF. Maksimal 2MB</small>
       </div>
       <div class="form-actions">

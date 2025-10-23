@@ -21,7 +21,7 @@ if (!$produk) {
   <meta name="viewport" content="width=device-width, initial-
 scale=1.0">
   <title>Detail Produk - <?php echo
-                          htmlspecialchars($produk['nama']); ?></title>
+    htmlspecialchars($produk['nama']); ?></title>
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -44,32 +44,35 @@ scale=1.0">
             <strong>Harga:</strong>
             <span class="price-large">
               Rp <?php echo
-                  number_format($produk['harga'], 0, ',', '.'); ?>
+                number_format($produk['harga'], 0, ',', '.'); ?>
             </span>
           </div>
           <div class="detail-row">
             <strong>Deskripsi:</strong>
             <p><?php echo
-                nl2br(htmlspecialchars($produk['deskripsi'])); ?></p>
+              nl2br(htmlspecialchars($produk['deskripsi'])); ?></p>
           </div>
           <div class="detail-row">
             <strong>Ditambahkan:</strong>
             <span><?php echo date(
-                    'd/m/Y H:i',
-                    strtotime($produk['created_at'])
-                  ); ?></span>
+              'd/m/Y H:i',
+              strtotime($produk['created_at'])
+            ); ?></span>
           </div>
           <div class="detail-row">
             <strong>Terakhir diupdate:</strong>
             <span><?php echo date(
-                    'd/m/Y H:i',
-                    strtotime($produk['updated_at'])
-                  ); ?></span>
+              'd/m/Y H:i',
+              strtotime($produk['updated_at'])
+            ); ?></span>
           </div>
           <div class="actions">
             <a href="index.php" class="btn btn-secondary">⬅️
               Kembali</a>
             <!-- Tombol Edit dan Delete akan dibuat di tugas -->
+            <a href="edit.php?id=<?php echo $produk['id']; ?>" class="btn btn-primary"> Edit</a>
+            <a href="delete.php?id=<?php echo $produk['id']; ?>" class="btn btn-danger"
+              onclick="return confirm('Yakin ingin menghapus produk ini?')">Hapus</a>
           </div>
         </div>
       </div>

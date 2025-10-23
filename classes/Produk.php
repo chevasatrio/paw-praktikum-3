@@ -135,4 +135,61 @@ VALUES (?, ?, ?, ?)";
     }
     return false;
   }
+  /**
+   * UPDATE: Edit produk
+   */
+  public function update($id)
+  {
+    // Query UPDATE dengan prepared statement
+    // HINT: UPDATE produk SET nama=?, deskripsi=?, harga=?, foto=? WHERE id=?
+    $query = "UPDATE produk SET 
+                nama = ?, 
+                deskripsi = ?, 
+                harga = ?, 
+                foto = ? 
+              WHERE id = ?";
+
+    $stmt = $this->conn->prepare($query);
+
+    // Bind parameter: s = string, d = double (harga), i = integer (id)
+    // Urutan: nama, deskripsi, harga, foto, id
+    $stmt->bind_param(
+      "ssdsi",
+      $this->nama,
+      $this->deskripsi,
+      $this->harga,
+      $this->foto,
+      $id
+    );
+
+    // Eksekusi statement dan return hasilnya (true/false)
+    if ($stmt->execute()) {
+      return true;
+    }
+    return false;
+  }
+
+  /**
+   * DELETE: Hapus produk
+   */
+  public function delete($id)
+  {
+    // 1. Ambil data dulu untuk mendapatkan nama file foto
+    $data = $this->readOne($id); // [cite: 791, 920]
+
+    // 2. Hapus file foto jika ada
+    if ($data['foto'] && file_exists('uploads/' . $data['foto'])) { // [cite: 792, 922]
+      unlink('uploads/' . $data['foto']); // [cite: 797, 798, 925]
+    }
+
+    // 3. Hapus record dari database
+    $query = "DELETE FROM produk WHERE id=?"; // [cite: 793, 796, 928]
+    $stmt = $this->conn->prepare($query); // [cite: 929]
+    $stmt->bind_param("i", $id); // [cite: 930]
+
+    // 4. Return true jika berhasil, false jika gagal
+    return $stmt->execute(); // [cite: 794, 931]
+  }
+
+
 }
